@@ -19,6 +19,9 @@ document.querySelector('#score--0').textContent = '0';
 document.querySelector('#score--1').textContent = '0';
 
 
+
+//ROLL BUTTON
+
 document.querySelector('.btn--roll').addEventListener('click', function(){
 	//Random number
 	var dice = Math.floor(Math.random() * 6) + 1;
@@ -35,16 +38,43 @@ document.querySelector('.btn--roll').addEventListener('click', function(){
 	}
 	else {
 		//Next player
+			nextPlayer();
+
+	}
+});
+
+
+
+//HOLD BUTTON
+
+document.querySelector('.btn--hold').addEventListener('click', function(){
+	//Add CURRENT score to GLOBAL score
+		scores[activePlayer] += roundScore;
+
+	//Update the UI
+		document.querySelector('#score--' + activePlayer).textContent = scores[activePlayer];
+
+	//Check if player reached a score 100
+
+
+	//Next Player
+		nextPlayer();
+})
+	
+
+
+
+	function nextPlayer(){
 		roundScore = 0;
 		document.querySelector('#current--' + activePlayer).textContent = roundScore;
 		activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
 
 		document.querySelector('.player--0').classList.toggle('player--active');
-		document.querySelector('.player--1').classList.toggle('player--active')
+		document.querySelector('.player--1').classList.toggle('player--active');
 
+
+		document.querySelector('.dice').style.display = "none";
 	}
-})
-	
 
 
 
