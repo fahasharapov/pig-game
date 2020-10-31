@@ -55,12 +55,19 @@ document.querySelector('.btn--hold').addEventListener('click', function(){
 		document.querySelector('#score--' + activePlayer).textContent = scores[activePlayer];
 
 	//Check if player reached a score 100
-
+	if (scores[activePlayer] >= 10) {
+		document.querySelector('#name--' + activePlayer).textContent = "WINNER!";
+		document.querySelector('.dice').style.display = "none";
+	} else {
 
 	//Next Player
 		nextPlayer();
+	}
 })
 	
+
+//NEW GAME BUTTON
+
 
 
 
@@ -72,11 +79,7 @@ document.querySelector('.btn--hold').addEventListener('click', function(){
 		document.querySelector('.player--0').classList.toggle('player--active');
 		document.querySelector('.player--1').classList.toggle('player--active');
 
-
 		document.querySelector('.dice').style.display = "none";
 	}
 
 
-
-/*
-document.querySelector('#current--' + activePlayer).textContent = dice;*/
